@@ -1,12 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getNeynarClient } from '~/lib/neynar';
 
 export async function GET() {
-  const client = getNeynarClient();
-  const fid = 123; // Ganti dengan FID asli setelah autentikasi
-  const castsResponse = await client.fetchCastsForUser({ fid });
-  const casts = castsResponse.casts.length;
-
   const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -14,10 +8,13 @@ export async function GET() {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="fc:frame" content="vNext" />
-        <meta name="fc:frame:button:1" content="View Airdrop" />
-        <meta name="fc:frame:button:1:action" content="post" />
-        <meta name="fc:frame:button:1:target" content="https://airdropapp-iota.vercel.app/airdrop" />
-        <title>Your Profile</title>
+        <meta name="fc:frame:button:1" content="Sign In" />
+        <meta name="fc:frame:button:1:action" content="post_redirect" />
+        <meta name="fc:frame:button:1:target" content="https://airdropapp-iota.vercel.app/login" />
+        <meta name="og:title" content="Airdrop App" />
+        <meta name="og:description" content="Sign in to view your airdrop points" />
+        <meta name="og:image" content="https://airdropapp-iota.vercel.app/opengraph-image" />
+        <title>Airdrop App</title>
         <style>
           body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
           h1 { font-size: 24px; }
@@ -25,9 +22,8 @@ export async function GET() {
         </style>
       </head>
       <body>
-        <h1>Your Profile</h1>
-        <p>Casts: ${casts}</p>
-        <p>Points: ${casts * 1}</p>
+        <h1>Airdrop App</h1>
+        <p>Please sign in with Farcaster to continue.</p>
         <script>
           window.parent.postMessage({ type: 'frame:ready' }, '*');
         </script>
