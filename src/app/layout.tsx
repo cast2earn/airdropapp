@@ -9,8 +9,8 @@ import './globals.css';
 
 const queryClient = new QueryClient();
 const farcasterConfig = {
-  domain: 'airdropapp-iota.vercel.app', // Diperbarui ke domain Vercel Anda
-  siweUri: 'https://airdropapp-iota.vercel.app/login', // Diperbarui ke URL login Vercel Anda
+  domain: 'airdropapp-iota.vercel.app',
+  siweUri: 'https://airdropapp-iota.vercel.app/login',
   rpcUrl: 'https://mainnet.optimism.io',
 };
 
