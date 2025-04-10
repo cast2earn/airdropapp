@@ -1,25 +1,29 @@
-import type { Metadata } from "next";
+'use client';
 
-import { getSession } from "~/auth"
-import "~/app/globals.css";
-import { Providers } from "~/app/providers";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
+import { config } from '@/lib/wagmi';
+import { AuthKitProvider } from '@farcaster/auth-kit';
+import './globals.css';
 
-export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_FRAME_NAME || "Frames v2 Demo",
-  description: process.env.NEXT_PUBLIC_FRAME_DESCRIPTION || "A Farcaster Frames v2 demo app",
+const queryClient = new QueryClient();
+const farcasterConfig = {
+  domain: 'localhost', // Ganti dengan domainmu saat deploy
+  siweUri: 'http://localhost:3000/login', // Ganti saat deploy
+  rpcUrl: 'https://mainnet.optimism.io', // RPC URL untuk Optimism
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {  
-  const session = await getSession()
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Providers session={session}>{children}</Providers>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <AuthKitProvider config={farcasterConfig}>
+              {children}
+            </AuthKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </body>
     </html>
   );
