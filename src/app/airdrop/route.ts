@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function POST() {
   const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -8,13 +8,7 @@ export async function GET() {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="fc:frame" content="vNext" />
-        <meta name="fc:frame:button:1" content="Sign In" />
-        <meta name="fc:frame:button:1:action" content="post_redirect" />
-        <meta name="fc:frame:button:1:target" content="https://airdropapp-iota.vercel.app/login" />
-        <meta name="og:title" content="Airdrop App" />
-        <meta name="og:description" content="Sign in to view your airdrop points" />
-        <meta name="og:image" content="https://airdropapp-iota.vercel.app/opengraph-image" />
-        <title>Airdrop App</title>
+        <title>Airdrop</title>
         <style>
           body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
           h1 { font-size: 24px; }
@@ -22,8 +16,8 @@ export async function GET() {
         </style>
       </head>
       <body>
-        <h1>Airdrop App</h1>
-        <p>Please sign in with Farcaster to continue.</p>
+        <h1>Airdrop</h1>
+        <p>Total Tokens: 100 (placeholder)</p>
         <script>
           window.parent.postMessage({ type: 'frame:ready' }, '*');
         </script>
