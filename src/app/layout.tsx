@@ -4,13 +4,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { config } from '~/lib/wagmi';
 import { AuthKitProvider } from '@farcaster/auth-kit';
+import '@farcaster/auth-kit/styles.css';
 import './globals.css';
 
 const queryClient = new QueryClient();
 const farcasterConfig = {
-  domain: 'localhost', // Ganti dengan domainmu saat deploy
-  siweUri: 'http://localhost:3000/login', // Ganti saat deploy
-  rpcUrl: 'https://mainnet.optimism.io', // RPC URL untuk Optimism
+  domain: 'airdropapp-iota.vercel.app', // Diperbarui ke domain Vercel Anda
+  siweUri: 'https://airdropapp-iota.vercel.app/login', // Diperbarui ke URL login Vercel Anda
+  rpcUrl: 'https://mainnet.optimism.io',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
