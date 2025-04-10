@@ -25,7 +25,8 @@ export async function GET() {
         <h1>Airdrop App</h1>
         <p>Please sign in with Farcaster to continue.</p>
         <script>
-          window.parent.postMessage({ type: 'frame:ready' }, '*');
+          import { sdk } from '@farcaster/frame-sdk'
+          await sdk.actions.ready();
         </script>
       </body>
     </html>

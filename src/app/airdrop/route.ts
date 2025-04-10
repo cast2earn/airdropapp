@@ -19,7 +19,8 @@ export async function POST() {
         <h1>Airdrop</h1>
         <p>Total Tokens: 100 (placeholder)</p>
         <script>
-          window.parent.postMessage({ type: 'frame:ready' }, '*');
+          import { sdk } from '@farcaster/frame-sdk'
+          await sdk.actions.ready();
         </script>
       </body>
     </html>
