@@ -18,9 +18,9 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".", // Tambahkan ini
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"] // Ubah dari "~/*" ke "@/*"
+      "~/*": ["./src/*"] // Ganti "@/*" menjadi "~/*"
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

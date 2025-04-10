@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getNeynarClient } from '@/lib/neynar';
-import AirdropTab from '@/components/AirdropTab';
+import { getNeynarClient } from '~/lib/neynar';
+import AirdropTab from '~/components/AirdropTab';
 import { SignInButton, useProfile } from '@farcaster/auth-kit';
 
 export default function Home() {
